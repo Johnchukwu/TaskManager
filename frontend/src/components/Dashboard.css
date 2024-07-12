@@ -1,0 +1,92 @@
+/* General styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa; /* Main page background color */
+}
+
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #3063d3; /* Sidebar background color */
+  color: #120d0d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  position: relative; /* To position the logout button at the bottom */
+}
+
+.sidebar img {
+  border-radius: 50%;
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+  font-size: 1.5em;
+}
+
+.nav-link {
+  width: 80%;
+  padding: 15px 20px 30px 50px;
+  text-align: left;
+  text-decoration: none;
+  color: #422323;
+  font-size: 1em;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.nav-icon {
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+.nav-link:hover {
+  background-color: #4a5e71;
+}
+
+.logout-link {
+  margin-top: auto;
+  width: 100%;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #dc3545;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the text horizontally */
+  transition: background-color 0.3s;
+}
+
+.logout-link:hover {
+  background-color: #c82333;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #ffffff; /* Main content background color */
+  color: #000000; /* Main content text color */
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.dashboard-header h1 {
+  font-size: 2.5em;
+  color: #000000; /* Header text color */
+}
