@@ -1,7 +1,7 @@
 // src/components/pages/SettingsPage.jsx
 import { useState } from 'react';
-import axios from 'axios';
 import './SettingsPage.css';
+import axiosInstance from '../axiosConfig';
 
 const SettingsPage = () => {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -21,7 +21,7 @@ const SettingsPage = () => {
     formData.append('profileImage', profileImage);
 
     try {
-      const response = await axios.put(`http://localhost:5500/api/users/${user._id}`, formData, {
+      const response = await axiosInstance.put(`api/users/${user._id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

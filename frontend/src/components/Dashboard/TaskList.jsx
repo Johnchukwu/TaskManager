@@ -1,7 +1,8 @@
 // src/components/Dashboard/TaskList.jsx
 import  { useState, useEffect } from 'react';
-import axios from 'axios';
+
 import { Link } from 'react-router-dom';
+import axiosInstance from '../../axiosConfig';
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
@@ -9,7 +10,7 @@ const TaskList = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get('http://localhost:5500/api/tasks', {
+        const response = await axiosInstance.get('api/tasks', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
         setTasks(response.data);
@@ -22,7 +23,7 @@ const TaskList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5500/api/tasks/${id}`, {
+      await axiosInstance.delete(`api/tasks/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setTasks(tasks.filter(task => task._id !== id));

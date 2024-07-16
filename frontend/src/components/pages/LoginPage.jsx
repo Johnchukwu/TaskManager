@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FaUser, FaLock } from 'react-icons/fa';
 import './LoginPage.css';
 import ThreeScene from './ThreeScene';
+import axiosInstance from '../../axiosConfig';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -14,7 +14,7 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5500/api/auth/login', { email, password });
+      const response = await axiosInstance.post('api/auth/login', { email, password });
       const userData = response.data;
       localStorage.setItem('user', JSON.stringify(userData));
       toast.success('Login successful');

@@ -1,7 +1,8 @@
 // src/components/Dashboard/EditTask.jsx
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+
 import { useParams, useNavigate } from 'react-router-dom';
+import axiosInstance from '../../axiosConfig';
 
 const EditTask = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ const EditTask = () => {
   useEffect(() => {
     const fetchTask = async () => {
       try {
-        const response = await axios.get(`http://localhost:5500/api/tasks/${id}`, {
+        const response = await axiosInstance.get(`api/tasks/${id}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
         setTask(response.data.task);
@@ -27,7 +28,7 @@ const EditTask = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:5500/api/tasks/${id}`, {
+      const response = await axiosInstance.put(`api/tasks/${id}`, {
         task,
         priority,
       }, {

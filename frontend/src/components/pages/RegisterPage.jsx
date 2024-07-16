@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FaUser, FaLock, FaEnvelope } from 'react-icons/fa';
 import './LoginPage.css';  // Reusing the same CSS file for consistency
 import ThreeScene from './ThreeScene';
+import axiosInstance from '../../axiosConfig';
 
 const RegisterPage = () => {
   const [username, setUsername] = useState('');
@@ -20,7 +20,7 @@ const RegisterPage = () => {
       formData.append('email', email);
       formData.append('password', password);
 
-      await axios.post('http://localhost:5500/api/auth/register', formData);
+      await axiosInstance.post('api/auth/register', formData);
       toast.success('Registration successful');
       navigate('/login');
     } catch (error) {
